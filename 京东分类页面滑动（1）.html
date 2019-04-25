@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			html {
+				height: 100%;
+				font-size: calc(100vw/7.5);
+			}
+			
+			body {
+				height: 100%;
+				margin: 0;
+			}
+			
+			.category {
+				height: 100%;
+				width: 100%;
+				padding: 0.9rem 0 1rem;
+				box-sizing: border-box;
+				display: flex;
+			}
+			
+			.category .aside {
+				width: 85px;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+				
+			}
+			
+			.aside ul {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+			}
+			
+			.aside ul li {
+				text-align: center;
+				line-height: 0.92rem;
+				font-size: 0.28rem;
+				border-bottom: solid 1px #aaa;
+			}
+			
+			.aside ul li a {
+				text-decoration: none;
+				color: #333;
+			}
+			
+			.main {
+				flex: 1;
+				background-color:greenyellow;
+			}
+			
+			header {
+				width: 100%;
+				height: 0.9rem;
+				position: fixed;
+				background-color: green;
+				top: 0;
+			}
+			
+			footer {
+				width: 100%;
+				height: 1rem;
+				position: fixed;
+				background-color: green;
+				bottom: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header></header>
+		<div class="category">
+
+			<div class="aside">
+				<ul>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="#">手机数码</a>
+					</li>
+				</ul>
+
+			</div>
+			<div class="main"></div>
+
+		</div>
+		<footer></footer>
+		<script type="text/javascript">
+			var aside =document.querySelector(".aside");
+			var scroll =document.querySelector(".aside ul");
+			var startY =0;    
+			var offsetTop =0; //距离body的距离，为0相当于第一个
+			
+			
+			aside.ontouchstartY = function(e){
+				
+			startY = e.changedTouches[0].clientY;//刚开始的距离 
+			}
+			
+			aside.ontouchmove = function(e){
+				var y =e.changedTouches[0].clientY;
+				var tmp = offsetTop+ y - startY;//滑动的距离
+				scroll.style.top = tmp>150?150:tmp +'px';
+			}
+			aside.ontouchend = function(e){
+				var y =e.changedTouches[0].clientY;
+				var tmp = offsetTop + y - startY;
+				offsetTop = tmp>0?0:tmp;
+				scroll.style.top = offsetTop +'px';
+				
+			}
+			aside.ontouchcancel = function(e) {
+				console.log('触摸取消');
+			}
+			
+			
+			
+			window.addEventListener('scroll', function() {
+				var t = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+
+				if(t > 50) {
+					aside.setAttribute("class", "search-bar fixed");
+				} else {
+					aside.setAttribute("class", "search-bar");
+				}
+
+			});
+			
+		</script>
+
+	</body>
+
+</html>
